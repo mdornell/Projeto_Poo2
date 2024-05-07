@@ -1,17 +1,37 @@
 package domain;
 
-public class MaterialOrcamento {
+import java.io.Serializable;
+import javax.persistence.*;
 
+@Entity
+public class MaterialOrcamento implements Serializable {
+
+    @EmbeddedId
+    private MaterialOrcamentoPK chComposta;
+
+    @Column(name = "preco_venda")
     private double precoVenda;
-    private int qtdVenda;
-    private Orcamento orcamento;
-    private Material material;
 
-    public MaterialOrcamento(double precoVenda, int qtdVenda, Orcamento orcamento, Material material) {
+    @Column(name = "qtd_venda")
+    private int qtdVenda;
+
+    public MaterialOrcamento(Orcamento orcamento, Material material , double precoVenda, int qtdVenda) {
+        this.chComposta = new MaterialOrcamentoPK(orcamento,material);
         this.precoVenda = precoVenda;
         this.qtdVenda = qtdVenda;
-        this.orcamento = orcamento;
-        this.material = material;
+    }
+
+    public MaterialOrcamento(double precoVenda, int qtdVenda) {
+        this.precoVenda = precoVenda;
+        this.qtdVenda = qtdVenda;
+    }
+
+    public MaterialOrcamentoPK getIdMaterialOrcamento() {
+        return chComposta;
+    }
+
+    public void setIdMaterialOrcamento(MaterialOrcamentoPK chComposta) {
+        this.chComposta = chComposta;
     }
 
     public double getPrecoVenda() {
@@ -30,20 +50,11 @@ public class MaterialOrcamento {
         this.qtdVenda = qtdVenda;
     }
 
-    public Orcamento getOrcamento() {
-        return orcamento;
-    }
+    
+    
+    
+    
 
-    public void setOrcamento(Orcamento orcamento) {
-        this.orcamento = orcamento;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
+    
 
 }

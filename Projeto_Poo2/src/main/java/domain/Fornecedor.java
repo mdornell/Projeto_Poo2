@@ -1,10 +1,19 @@
 package domain;
 
-public class Fornecedor extends Pessoa{
+import javax.persistence.*;
 
+@Entity
+public class Fornecedor extends Pessoa {
+
+    @Column(name = "cnpj")
     private String cnpj;
 
-    public Fornecedor(String nome, String celular, String email, Endereco endereco, String cnpj) {
+    public Fornecedor(Long idFornecedor, String cnpj, int idPessoa, String nome, String celular, String email, Endereco endereco) {
+        super(idPessoa, nome, celular, email, endereco);
+        this.cnpj = cnpj;
+    }
+
+    public Fornecedor(String cnpj, String nome, String celular, String email, Endereco endereco) {
         super(nome, celular, email, endereco);
         this.cnpj = cnpj;
     }
