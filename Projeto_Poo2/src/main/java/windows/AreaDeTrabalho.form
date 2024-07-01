@@ -131,7 +131,7 @@
     <Component class="javax.swing.JLabel" name="lblBackgroud">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ABM-Pinturas.png"/>
+          <Image iconType="3" name="/img/ABM-Pinturas.png"/>
         </Property>
       </Properties>
     </Component>

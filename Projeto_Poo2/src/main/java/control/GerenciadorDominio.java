@@ -5,7 +5,7 @@
 package control;
 
 //import dao.ConectionPostgres;
-import dao.ConexaoHibernate;
+import dao.ConectionDAO;
 import java.sql.SQLException;
 
 /**
@@ -17,7 +17,7 @@ public class GerenciadorDominio {
 
     public GerenciadorDominio() throws ClassNotFoundException, SQLException {
 //        ConectionPostgres.obterConexao();
-        ConexaoHibernate.getSessionFactory();
+        ConectionDAO.getSessionFactory();
 
     }
 }

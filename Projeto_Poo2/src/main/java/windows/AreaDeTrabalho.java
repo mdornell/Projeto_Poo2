@@ -47,7 +47,7 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         setTitle("ABM Pinturas");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        lblBackgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ABM-Pinturas.png"))); // NOI18N
+        lblBackgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ABM-Pinturas.png"))); // NOI18N
 
         mnMaterias.setText("Materias");
 
