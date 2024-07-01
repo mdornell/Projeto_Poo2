@@ -15,24 +15,20 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import windows.*;
-import windows.formularios.DlgFormClientes;
-import windows.formularios.DlgFormFornecedor;
 import windows.formularios.DlgFormMaterial;
 import windows.formularios.DlgFormOrcamento;
-import windows.pesquisas.DlgPesqCliente;
-import windows.pesquisas.DlgPesqFornecedor;
+import windows.formularios.DlgFormPessoa;
 import windows.pesquisas.DlgPesqMaterial;
+import windows.pesquisas.DlgPesqPessoa;
 
 public class GerenciaInterface {
 
     private AreaDeTrabalho princ;
-    private DlgFormClientes cadCli;
-    private DlgFormFornecedor cadForn;
     private DlgFormMaterial cadMaterial;
     private DlgFormOrcamento cadOrcamento;
-    private DlgPesqCliente pesqCli;
-    private DlgPesqFornecedor pesqForn;
     private DlgPesqMaterial pesqMat;
+    private DlgFormPessoa formPessoa;
+    private DlgPesqPessoa pesqPessoa;
 
     private GerenciadorDominio gerDom;
 
@@ -81,13 +77,9 @@ public class GerenciaInterface {
         princ.setVisible(true);
     }
 
-    public void abrirFormCliente() {
-        abrirJanela(princ, cadCli, DlgFormClientes.class);
+    public void abrirFormPessoa() {
+        abrirJanela(princ, formPessoa, DlgFormPessoa.class);
 
-    }
-
-    public void abrirFormFornecedor() {
-        abrirJanela(princ, cadForn, DlgFormFornecedor.class);
     }
 
     public void abrirFormMaterial() {
@@ -98,12 +90,9 @@ public class GerenciaInterface {
         abrirJanela(princ, cadOrcamento, DlgFormOrcamento.class);
     }
 
-    public void abrirPesqCliente() {
-        abrirJanela(princ, pesqCli, DlgPesqCliente.class);
-    }
 
-    public void abrirPesqFornecedor() {
-        abrirJanela(princ, pesqForn, DlgPesqFornecedor.class);
+    public void abrirPesqPessoa() {
+        abrirJanela(princ, pesqPessoa, DlgPesqPessoa.class);
     }
 
     public void abrirPesqMaterial() {

@@ -25,50 +25,27 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmPesquisarMaterialActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="mmFornecedor">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Fornecedor"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="mmRegistarFornecedor">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Registrar Fornecedor"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmRegistarFornecedorActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="mmPesquisarFornecedor">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Pesquisar Fornecedor"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmPesquisarFornecedorActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mnClientes">
+        <Menu class="javax.swing.JMenu" name="mnPessoa">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Clientes"/>
+            <Property name="text" type="java.lang.String" value="Cliente/Fornecedor"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mmRegistarCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="mmRegistarPessoa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar Cliente"/>
+                <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmRegistarClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmRegistarPessoaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mmPesquisarCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="mmPesquisarPessoa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pesquisar Cliente"/>
+                <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmPesquisarClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmPesquisarPessoaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

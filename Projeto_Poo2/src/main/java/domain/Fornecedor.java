@@ -1,29 +1,17 @@
 package domain;
 
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 public class Fornecedor extends Pessoa {
-
+    
     @Column(name = "cnpj")
     private String cnpj;
 
-    public Fornecedor(Long idFornecedor, String cnpj, int idPessoa, String nome, String celular, String email, Endereco endereco) {
-        super(idPessoa, nome, celular, email, endereco);
-        this.cnpj = cnpj;
-    }
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
+    private List<Material> materiais;
 
-    public Fornecedor(String cnpj, String nome, String celular, String email, Endereco endereco) {
-        super(nome, celular, email, endereco);
-        this.cnpj = cnpj;
+    public Fornecedor() {
     }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
 }

@@ -12,7 +12,7 @@ import control.GerenciaInterface;
  */
 public class AreaDeTrabalho extends javax.swing.JFrame {
 
-    private GerenciaInterface genInter;
+    private final GerenciaInterface genInter;
     
     public AreaDeTrabalho(GerenciaInterface newGenInter) {
         genInter = newGenInter;
@@ -34,12 +34,9 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         mnMaterias = new javax.swing.JMenu();
         mmRegistrarMeterial = new javax.swing.JMenuItem();
         mmPesquisarMaterial = new javax.swing.JMenuItem();
-        mmFornecedor = new javax.swing.JMenu();
-        mmRegistarFornecedor = new javax.swing.JMenuItem();
-        mmPesquisarFornecedor = new javax.swing.JMenuItem();
-        mnClientes = new javax.swing.JMenu();
-        mmRegistarCliente = new javax.swing.JMenuItem();
-        mmPesquisarCliente = new javax.swing.JMenuItem();
+        mnPessoa = new javax.swing.JMenu();
+        mmRegistarPessoa = new javax.swing.JMenuItem();
+        mmPesquisarPessoa = new javax.swing.JMenuItem();
         mnTrabalhos = new javax.swing.JMenu();
         mmRegistrarOrcamento = new javax.swing.JMenuItem();
 
@@ -67,47 +64,27 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         });
         mnMaterias.add(mmPesquisarMaterial);
 
-        mmFornecedor.setText("Fornecedor");
-
-        mmRegistarFornecedor.setText("Registrar Fornecedor");
-        mmRegistarFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mmRegistarFornecedorActionPerformed(evt);
-            }
-        });
-        mmFornecedor.add(mmRegistarFornecedor);
-
-        mmPesquisarFornecedor.setText("Pesquisar Fornecedor");
-        mmPesquisarFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mmPesquisarFornecedorActionPerformed(evt);
-            }
-        });
-        mmFornecedor.add(mmPesquisarFornecedor);
-
-        mnMaterias.add(mmFornecedor);
-
         mnBarra.add(mnMaterias);
 
-        mnClientes.setText("Clientes");
+        mnPessoa.setText("Cliente/Fornecedor");
 
-        mmRegistarCliente.setText("Registrar Cliente");
-        mmRegistarCliente.addActionListener(new java.awt.event.ActionListener() {
+        mmRegistarPessoa.setText("Registrar");
+        mmRegistarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mmRegistarClienteActionPerformed(evt);
+                mmRegistarPessoaActionPerformed(evt);
             }
         });
-        mnClientes.add(mmRegistarCliente);
+        mnPessoa.add(mmRegistarPessoa);
 
-        mmPesquisarCliente.setText("Pesquisar Cliente");
-        mmPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
+        mmPesquisarPessoa.setText("Pesquisar");
+        mmPesquisarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mmPesquisarClienteActionPerformed(evt);
+                mmPesquisarPessoaActionPerformed(evt);
             }
         });
-        mnClientes.add(mmPesquisarCliente);
+        mnPessoa.add(mmPesquisarPessoa);
 
-        mnBarra.add(mnClientes);
+        mnBarra.add(mnPessoa);
 
         mnTrabalhos.setText("Trabalhos");
 
@@ -145,25 +122,17 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         genInter.abrirPesqMaterial();
     }//GEN-LAST:event_mmPesquisarMaterialActionPerformed
 
-    private void mmRegistarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmRegistarFornecedorActionPerformed
-        genInter.abrirFormFornecedor();
-    }//GEN-LAST:event_mmRegistarFornecedorActionPerformed
-
-    private void mmPesquisarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmPesquisarFornecedorActionPerformed
-        genInter.abrirPesqFornecedor();
-    }//GEN-LAST:event_mmPesquisarFornecedorActionPerformed
-
-    private void mmRegistarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmRegistarClienteActionPerformed
-       genInter.abrirFormCliente();
-    }//GEN-LAST:event_mmRegistarClienteActionPerformed
-
-    private void mmPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmPesquisarClienteActionPerformed
-        genInter.abrirPesqCliente();
-    }//GEN-LAST:event_mmPesquisarClienteActionPerformed
-
     private void mmRegistrarOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmRegistrarOrcamentoActionPerformed
         genInter.abrirFormOrcamento();
     }//GEN-LAST:event_mmRegistrarOrcamentoActionPerformed
+
+    private void mmRegistarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmRegistarPessoaActionPerformed
+        genInter.abrirFormPessoa();
+    }//GEN-LAST:event_mmRegistarPessoaActionPerformed
+
+    private void mmPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmPesquisarPessoaActionPerformed
+        genInter.abrirPesqPessoa();
+    }//GEN-LAST:event_mmPesquisarPessoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,17 +140,14 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblBackgroud;
-    private javax.swing.JMenu mmFornecedor;
-    private javax.swing.JMenuItem mmPesquisarCliente;
-    private javax.swing.JMenuItem mmPesquisarFornecedor;
     private javax.swing.JMenuItem mmPesquisarMaterial;
-    private javax.swing.JMenuItem mmRegistarCliente;
-    private javax.swing.JMenuItem mmRegistarFornecedor;
+    private javax.swing.JMenuItem mmPesquisarPessoa;
+    private javax.swing.JMenuItem mmRegistarPessoa;
     private javax.swing.JMenuItem mmRegistrarMeterial;
     private javax.swing.JMenuItem mmRegistrarOrcamento;
     private javax.swing.JMenuBar mnBarra;
-    private javax.swing.JMenu mnClientes;
     private javax.swing.JMenu mnMaterias;
+    private javax.swing.JMenu mnPessoa;
     private javax.swing.JMenu mnTrabalhos;
     // End of variables declaration//GEN-END:variables
 

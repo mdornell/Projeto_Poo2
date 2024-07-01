@@ -19,7 +19,7 @@
         <mapping class="domain.Orcamento"></mapping>
         <mapping class="domain.Material"></mapping>
         <mapping class="domain.MaterialOrcamento"></mapping>
-        <mapping class="domain.MaterialOrcamentoPK"></mapping>
+        <mapping class="domain.MaterialOrcamentoPk"></mapping>
         <mapping class="domain.Endereco"></mapping>
         <mapping class="domain.Cliente"></mapping>
         <mapping class="domain.Fornecedor"></mapping>
