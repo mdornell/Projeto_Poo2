@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
 import javax.persistence.*;
 
@@ -22,5 +23,15 @@ public class TipoServico implements Serializable {
 
     public TipoServico() {
     }
+    
+    public Object toArray() throws ParseException {
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
+
     
 }

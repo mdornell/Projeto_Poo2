@@ -14,11 +14,18 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import org.hibernate.HibernateException;
+
+import domain.Pessoa;
 import windows.*;
 import windows.formularios.DlgFormMaterial;
 import windows.formularios.DlgFormOrcamento;
 import windows.formularios.DlgFormPessoa;
 import windows.pesquisas.DlgPesqMaterial;
+import windows.pesquisas.DlgPesqOrcamento;
 import windows.pesquisas.DlgPesqPessoa;
 
 public class GerenciaInterface {
@@ -29,10 +36,12 @@ public class GerenciaInterface {
     private DlgPesqMaterial pesqMat;
     private DlgFormPessoa formPessoa;
     private DlgPesqPessoa pesqPessoa;
-
     private GerenciadorDominio gerDom;
+    private DlgPesqOrcamento pesqOrcamento;
 
-    public GerenciaInterface() {
+    private static GerenciaInterface gerenciaIG = null;
+
+    private GerenciaInterface() {
 
         try {
             gerDom = new GerenciadorDominio();
@@ -44,9 +53,13 @@ public class GerenciaInterface {
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -56,18 +69,29 @@ public class GerenciaInterface {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AreaDeTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         GerenciaInterface gerenciaIG = new GerenciaInterface();
         gerenciaIG.abrirAreaDeTrabalho();
+    }
+
+    public static GerenciaInterface getInstance() {
+        if (gerenciaIG == null) {
+            gerenciaIG = new GerenciaInterface();
+        }
+        return gerenciaIG;
     }
 
     public void abrirAreaDeTrabalho() {
@@ -90,20 +114,24 @@ public class GerenciaInterface {
         abrirJanela(princ, cadOrcamento, DlgFormOrcamento.class);
     }
 
-
     public void abrirPesqPessoa() {
-        abrirJanela(princ, pesqPessoa, DlgPesqPessoa.class);
+       pesqPessoa = (DlgPesqPessoa) abrirJanela(princ, pesqPessoa, DlgPesqPessoa.class);
     }
 
     public void abrirPesqMaterial() {
         abrirJanela(princ, pesqMat, DlgPesqMaterial.class);
     }
 
+    public void abrirPesqOrcamento() {
+        abrirJanela(princ, pesqOrcamento, DlgPesqOrcamento.class);
+    }
+
     private JDialog abrirJanela(java.awt.Frame parent, JDialog dlg, Class classe) {
         if (dlg == null) {
             try {
                 dlg = (JDialog) classe.getConstructor(Frame.class, boolean.class).newInstance(parent, true);
-            } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException ex) {
                 JOptionPane.showMessageDialog(parent, "Erro ao abrir a janela " + classe.getName());
             }
         }
@@ -111,4 +139,33 @@ public class GerenciaInterface {
         return dlg;
     }
 
+    public GerenciadorDominio getGerDom() {
+        return gerDom;
+    }
+
+    public <T> void carregarComboBox(JComboBox combo, JDialog janela, Class<T> classe) {
+        try {
+            List<T> lista = (List<T>) this.gerDom.list(classe);
+            combo.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (HibernateException ex) {
+            JOptionPane.showMessageDialog(janela, "Erro carregar Combo Box: " + ex);
+        }
+    }
+
+    public void carregarTabela(JTable tabela, JDialog janela, Class<?> classe, String pesq, int tipo) {
+        try {
+            List<?> lista = (List<?>) this.gerDom.list(classe, pesq, tipo);
+            ((DefaultTableModel) tabela.getModel()).setNumRows(0);
+            for (Object obj : lista) {
+                // ADICIONAR LINHA NA TABELA
+                ((DefaultTableModel) tabela.getModel())
+                        .addRow((Object[]) obj.getClass().getMethod("toArray").invoke(obj));
+            }
+        } catch (HibernateException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException ex) {
+            JOptionPane.showMessageDialog(janela, "Erro carregar Tabela: " + ex);
+        }
+    }
+
+    
 }

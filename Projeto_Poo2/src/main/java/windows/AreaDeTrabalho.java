@@ -16,7 +16,6 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
     
     public AreaDeTrabalho(GerenciaInterface newGenInter) {
         genInter = newGenInter;
-        
         initComponents();
     }
 
@@ -39,6 +38,7 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         mmPesquisarPessoa = new javax.swing.JMenuItem();
         mnTrabalhos = new javax.swing.JMenu();
         mmRegistrarOrcamento = new javax.swing.JMenuItem();
+        mmPesquisarOrcamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ABM Pinturas");
@@ -96,6 +96,14 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         });
         mnTrabalhos.add(mmRegistrarOrcamento);
 
+        mmPesquisarOrcamento.setText("Pesquisar Orçamento");
+        mmPesquisarOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmPesquisarOrcamentoActionPerformed(evt);
+            }
+        });
+        mnTrabalhos.add(mmPesquisarOrcamento);
+
         mnBarra.add(mnTrabalhos);
 
         setJMenuBar(mnBarra);
@@ -134,6 +142,10 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
         genInter.abrirPesqPessoa();
     }//GEN-LAST:event_mmPesquisarPessoaActionPerformed
 
+    private void mmPesquisarOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmPesquisarOrcamentoActionPerformed
+        genInter.abrirPesqOrcamento();
+    }//GEN-LAST:event_mmPesquisarOrcamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,6 +153,7 @@ public class AreaDeTrabalho extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblBackgroud;
     private javax.swing.JMenuItem mmPesquisarMaterial;
+    private javax.swing.JMenuItem mmPesquisarOrcamento;
     private javax.swing.JMenuItem mmPesquisarPessoa;
     private javax.swing.JMenuItem mmRegistarPessoa;
     private javax.swing.JMenuItem mmRegistrarMeterial;

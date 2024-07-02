@@ -18,8 +18,8 @@ public class Endereco implements Serializable {
     private String rua;
 
     @Column(name = "num")
-    private String num;
-
+    private int num;
+    
     @Column(name = "referencia")
     private String referencia;
 
@@ -36,6 +36,16 @@ public class Endereco implements Serializable {
     private List<Pessoa> pessoas;
 
     public Endereco() {
+    }
+
+    public Endereco(String cep, String rua, int num,String referencia ,String bairro, String cidade, String estado) {
+        this.cep = cep;
+        this.rua = rua;
+        this.num = num;
+        this.referencia = referencia;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
     }
 
 }
