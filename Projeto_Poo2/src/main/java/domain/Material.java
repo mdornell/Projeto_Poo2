@@ -100,6 +100,10 @@ public class Material implements Serializable {
         return new Object[]{this, this.qtdEstoque, this.precoCompra, this.descricao, this.fornecedor};
     }
 
+    public Object[] toArray2() throws ParseException {
+        return new Object[]{this, this.precoCompra};
+    }
+
     @Override
     public String toString() {
         return nome;
