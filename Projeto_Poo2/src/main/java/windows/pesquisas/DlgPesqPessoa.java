@@ -126,6 +126,11 @@ public class DlgPesqPessoa extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tblPessoa);
 
         btnSelecionar.setText("Selecionar");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Deletar");
 
@@ -209,6 +214,20 @@ public class DlgPesqPessoa extends javax.swing.JDialog {
 
         genInt.carregarTabela(tblPessoa, this, Pessoa.class, "", cbTipos.getSelectedIndex());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+        GerenciaInterface gerInt = GerenciaInterface.getInstance();
+
+        int linha = tblPessoa.getSelectedRow();
+
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um item da tabela");
+            return;
+        } 
+        gerInt.getGerenciaEdicao().setPessoaSelecionada((Pessoa) tblPessoa.getValueAt(linha, 0));
+        this.dispose();
+
+    }//GEN-LAST:event_btnSelecionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

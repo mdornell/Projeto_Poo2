@@ -4,6 +4,8 @@
  */
 package windows.pesquisas;
 
+import javax.swing.JOptionPane;
+
 import control.GerenciaInterface;
 import domain.Material;
 
@@ -36,7 +38,7 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
         tblMaterial = new javax.swing.JTable();
         cbTipos = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnSelecionar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -70,7 +72,12 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
 
         cbTipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
 
-        jButton2.setText("Selecionar");
+        btnSelecionar.setText("Selecionar");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cadastrar");
 
@@ -86,7 +93,7 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,7 +102,7 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton2)
+                    .addComponent(btnSelecionar)
                     .addComponent(jButton4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -148,14 +155,33 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
         genInterface.carregarTabela(tblMaterial, this, Material.class, "", cbTipos.getSelectedIndex());
     }//GEN-LAST:event_btnPesquisaControleClienteActionPerformed
 
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+        GerenciaInterface gerInt = GerenciaInterface.getInstance();
+
+        int[] linhas = tblMaterial.getSelectedRows();
+
+        if(linhas.length == 0){
+            JOptionPane.showMessageDialog(this, "Selecione um Material");
+            return;
+        }
+
+        for(int i = 0; i < linhas.length; i++){
+            Material material = (Material) tblMaterial.getValueAt(linhas[i], 0);
+            gerInt.getGerenciaEdicao().addMaterialSelecionado(material);
+        }
+
+        this.dispose();
+
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPesquisaControleCliente;
+    private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cbTipos;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

@@ -11,13 +11,16 @@ import domain.Cliente;
 import domain.Endereco;
 import domain.Fornecedor;
 import domain.Material;
+import domain.Orcamento;
+import domain.Pessoa;
+import domain.TipoServico;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 
-import domain.Pessoa;
+
 
 public class GerenciadorDominio {
 
@@ -53,6 +56,8 @@ public class GerenciadorDominio {
 
         return "Material inserido com sucesso!";
     }
+
+    
 
     public List list(Class classe){
         return genDAO.listar(classe);

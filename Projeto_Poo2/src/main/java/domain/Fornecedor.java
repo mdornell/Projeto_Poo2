@@ -38,9 +38,6 @@ public class Fornecedor extends Pessoa {
         this.materiais = materiais;
     }
 
-    // public Object toArray() throws ParseException {
-    //     return this;
-    // }
 
     public Object[] toArray() throws ParseException {
         return new Object[]{this,"","", this.cnpj };

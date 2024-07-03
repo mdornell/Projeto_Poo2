@@ -5,7 +5,14 @@
 package windows.formularios;
 
 import control.GerenciaInterface;
+import domain.Material;
+import domain.Pessoa;
 import domain.TipoServico;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,8 +52,10 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
         btnAddMaterial = new javax.swing.JButton();
         lblCliente = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
-        btnAddMaterial1 = new javax.swing.JButton();
-        btnAddMaterial2 = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
+        btnSalvarOrcamento = new javax.swing.JButton();
+        btnCalcularOrc = new javax.swing.JButton();
+        btnRemoveMaterial1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -74,9 +83,9 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         jscrollTabela.setBorder(javax.swing.BorderFactory.createTitledBorder("Material"));
@@ -86,18 +95,28 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Descrição", "Valor"
+                "Nome", "Valor", "Quantidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class
+                java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jscrollTabela.setViewportView(tblMaterial);
+        if (tblMaterial.getColumnModel().getColumnCount() > 0) {
+            tblMaterial.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         lblCodigo1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCodigo1.setText("Metros quadrados(m²) :");
@@ -111,64 +130,95 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
 
         txtValorOrcamento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        btnAddMaterial.setText("Adicionar Material");
+        btnAddMaterial.setText("+");
+        btnAddMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMaterialActionPerformed(evt);
+            }
+        });
 
         lblCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCliente.setText("Cliente :");
 
-        btnAddMaterial1.setText("Escolher Cliente");
+        btnCliente.setText("Escolher Cliente");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
 
-        btnAddMaterial2.setText("Salvar");
+        btnSalvarOrcamento.setText("Salvar");
+        btnSalvarOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarOrcamentoActionPerformed(evt);
+            }
+        });
+
+        btnCalcularOrc.setText("Calcular");
+        btnCalcularOrc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularOrcActionPerformed(evt);
+            }
+        });
+
+        btnRemoveMaterial1.setText("X");
+        btnRemoveMaterial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveMaterial1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescricao))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAddMaterial2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDescricao))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jscrollTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblCodigo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblCodigo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtMetrosQuad)
-                                                .addComponent(cbTipoServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtCliente)
-                                                .addComponent(btnAddMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnAddMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblCodigo3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtValorOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jscrollTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblCodigo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCodigo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMetrosQuad)
+                                    .addComponent(cbTipoServico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCliente)
+                                    .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAddMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnRemoveMaterial1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCodigo3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSalvarOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCalcularOrc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtValorOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,7 +227,9 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jscrollTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddMaterial))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddMaterial)
+                            .addComponent(btnRemoveMaterial1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCodigo1)
@@ -191,14 +243,16 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
                             .addComponent(lblCliente)
                             .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddMaterial1)
+                        .addComponent(btnCliente)
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblCodigo3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCodigo3)
                             .addComponent(txtValorOrcamento))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddMaterial2)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarOrcamento)
+                    .addComponent(btnCalcularOrc))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -210,6 +264,93 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
         genInterface.carregarComboBox(cbTipoServico, this, TipoServico.class);
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        GerenciaInterface gerInterface = GerenciaInterface.getInstance();
+        
+        gerInterface.abrirPesqPessoa();
+        try {
+            preencherCampos(gerInterface.getGerenciaEdicao().getPessoaSelecionada());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro: "+ex);
+        }
+    }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnAddMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMaterialActionPerformed
+       GerenciaInterface gerInt = GerenciaInterface.getInstance();
+
+       gerInt.abrirPesqMaterial();
+       try {
+           gerInt.carregarTabela(tblMaterial, this, gerInt.getGerenciaEdicao().getMaterialSelecionado());
+       } catch (Exception ex) {
+           JOptionPane.showMessageDialog(this, "Erro: "+ex);
+       }
+    }//GEN-LAST:event_btnAddMaterialActionPerformed
+
+    private void btnSalvarOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarOrcamentoActionPerformed
+        GerenciaInterface gerInt = GerenciaInterface.getInstance();
+
+        String descricao = txtDescricao.getText();
+        double metrosQuad = Double.parseDouble(txtMetrosQuad.getText());
+        List<Material> materiais = getMateriais();
+        TipoServico tipoServico = (TipoServico) cbTipoServico.getSelectedItem();
+        Pessoa cliente = gerInt.getGerenciaEdicao().getPessoaSelecionada();
+        double valorOrcamento = Double.parseDouble(txtValorOrcamento.getText());
+        
+        
+
+    }//GEN-LAST:event_btnSalvarOrcamentoActionPerformed
+
+    private void btnCalcularOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularOrcActionPerformed
+        GerenciaInterface gerInt = GerenciaInterface.getInstance();
+
+        double metrosQuad = Double.parseDouble(txtMetrosQuad.getText());
+        List<Material> materiais = getMateriais();
+        TipoServico tipoServico = (TipoServico) cbTipoServico.getSelectedItem();
+        
+        String valorOrcamento = String.valueOf(calcularValorOrcamento(metrosQuad, materiais, tipoServico));
+        
+        txtValorOrcamento.setText(valorOrcamento);
+    }//GEN-LAST:event_btnCalcularOrcActionPerformed
+
+    private void btnRemoveMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMaterial1ActionPerformed
+        int linha = tblMaterial.getSelectedRow();
+
+        if(linha == -1){
+            JOptionPane.showMessageDialog(this, "Selecione um material para remover");
+            return;
+        }
+
+        removeRow(linha);
+        
+    }//GEN-LAST:event_btnRemoveMaterial1ActionPerformed
+
+    private double calcularValorOrcamento(double metrosQuad, List<Material> materiais, TipoServico tipoServico){
+        double valor = 0;
+        valor += tipoServico.getValor();
+        valor *= metrosQuad;
+        
+        for (Material material : materiais) {
+            valor += material.getPrecoCompra();
+        }
+        return valor;
+    }
+
+    private void removeRow(int linha){
+        ((javax.swing.table.DefaultTableModel) tblMaterial.getModel()).removeRow(linha);
+    }
+
+    private List<Material> getMateriais(){
+        List<Material> materiais = new ArrayList<>();
+        for (int i = 0; i < tblMaterial.getRowCount(); i++) {
+            Material material = (Material) tblMaterial.getValueAt(i, 0);
+            materiais.add(material);
+        }
+        return materiais;
+    }
+
+    private void preencherCampos(Pessoa pessoa){
+        txtCliente.setText(pessoa.getNome());
+    }
     /**
      * @param args the command line arguments
      */
@@ -217,8 +358,10 @@ public class DlgFormOrcamento extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddMaterial;
-    private javax.swing.JButton btnAddMaterial1;
-    private javax.swing.JButton btnAddMaterial2;
+    private javax.swing.JButton btnCalcularOrc;
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnRemoveMaterial1;
+    private javax.swing.JButton btnSalvarOrcamento;
     private javax.swing.JComboBox<String> cbTipoServico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;

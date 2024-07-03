@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -26,59 +26,61 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel3" min="-2" pref="589" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblNome" min="-2" pref="69" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="589" max="-2" attributes="0"/>
+                      <Component id="txtDescricao" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnAddMaterial2" min="-2" pref="185" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblNome" min="-2" pref="69" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtDescricao" max="32767" attributes="0"/>
+                      <Component id="jscrollTabela" min="-2" pref="185" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblCodigo2" max="32767" attributes="0"/>
+                                  <Component id="lblCodigo1" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jscrollTabela" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblCodigo2" max="32767" attributes="0"/>
-                                              <Component id="lblCodigo1" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtMetrosQuad" max="32767" attributes="0"/>
-                                              <Component id="cbTipoServico" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblCliente" min="-2" pref="126" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtCliente" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="btnAddMaterial1" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtMetrosQuad" max="32767" attributes="0"/>
+                                  <Component id="cbTipoServico" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnAddMaterial" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblCodigo3" min="-2" pref="213" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtValorOrcamento" min="-2" pref="137" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lblCliente" min="-2" pref="126" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnCliente" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnAddMaterial" min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="btnRemoveMaterial1" min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblCodigo3" min="-2" pref="213" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnSalvarOrcamento" min="-2" pref="185" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCalcularOrc" max="32767" attributes="0"/>
+                          <Component id="txtValorOrcamento" pref="137" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,7 +88,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -96,7 +98,10 @@
                   <Group type="102" attributes="0">
                       <Component id="jscrollTabela" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAddMaterial" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAddMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRemoveMaterial1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -114,17 +119,20 @@
                           <Component id="txtCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAddMaterial1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblCodigo3" max="32767" attributes="0"/>
+                          <Component id="lblCodigo3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtValorOrcamento" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnAddMaterial2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSalvarOrcamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCalcularOrc" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -153,9 +161,9 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -189,10 +197,33 @@
         <Component class="javax.swing.JTable" name="tblMaterial">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="2" rowCount="0">
-                <Column editable="true" title="Descri&#xe7;&#xe3;o" type="java.lang.String"/>
-                <Column editable="true" title="Valor" type="java.lang.Double"/>
+              <Table columnCount="3" rowCount="0">
+                <Column editable="false" title="Nome" type="java.lang.String"/>
+                <Column editable="false" title="Valor" type="java.lang.Double"/>
+                <Column editable="false" title="Quantidade" type="java.lang.Integer"/>
               </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
         </Component>
@@ -240,8 +271,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddMaterial">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adicionar Material"/>
+        <Property name="text" type="java.lang.String" value="+"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddMaterialActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCliente">
       <Properties>
@@ -251,15 +285,37 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliente">
     </Component>
-    <Component class="javax.swing.JButton" name="btnAddMaterial1">
+    <Component class="javax.swing.JButton" name="btnCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="Escolher Cliente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClienteActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAddMaterial2">
+    <Component class="javax.swing.JButton" name="btnSalvarOrcamento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarOrcamentoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCalcularOrc">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calcular"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcularOrcActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRemoveMaterial1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="X"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveMaterial1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

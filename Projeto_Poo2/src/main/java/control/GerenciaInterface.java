@@ -8,8 +8,6 @@ import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -40,11 +38,14 @@ public class GerenciaInterface {
     private DlgPesqOrcamento pesqOrcamento;
 
     private static GerenciaInterface gerenciaIG = null;
+    private static GerenciaEdicao gerEdicao = null;
 
     private GerenciaInterface() {
 
         try {
             gerDom = new GerenciadorDominio();
+            gerEdicao = new GerenciaEdicao();
+
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(princ, ex);
             System.exit(-1);
@@ -92,6 +93,13 @@ public class GerenciaInterface {
             gerenciaIG = new GerenciaInterface();
         }
         return gerenciaIG;
+    }
+
+    public static GerenciaEdicao getGerenciaEdicao(){
+        if(gerEdicao == null){
+            gerEdicao = new GerenciaEdicao();
+        }
+        return gerEdicao;
     }
 
     public void abrirAreaDeTrabalho() {
@@ -166,6 +174,23 @@ public class GerenciaInterface {
             JOptionPane.showMessageDialog(janela, "Erro carregar Tabela: " + ex);
         }
     }
+
+    public void carregarTabela(JTable tabela, JDialog janela, List<?> lista) {
+        ((DefaultTableModel) tabela.getModel()).setNumRows(0);
+        try {
+            ((DefaultTableModel) tabela.getModel()).setNumRows(0);
+            for (Object obj : lista) {
+                // ADICIONAR LINHA NA TABELA
+                ((DefaultTableModel) tabela.getModel())
+                        .addRow((Object[]) obj.getClass().getMethod("toArray2").invoke(obj));
+            }
+        } catch (HibernateException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException ex) {
+            JOptionPane.showMessageDialog(janela, "Erro carregar Tabela: " + ex);
+        }
+    }
+
+
 
     
 }

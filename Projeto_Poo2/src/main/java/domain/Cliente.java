@@ -25,6 +25,30 @@ public class Cliente extends Pessoa {
         this.rg = rg;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public List<Orcamento> getOrcamentos() {
+        return orcamentos;
+    }
+
+    public void setOrcamentos(List<Orcamento> orcamentos) {
+        this.orcamentos = orcamentos;
+    }
+
     public Object[] toArray() throws ParseException {
         return new Object[]{this,this.rg,this.cpf, "" };
     }
