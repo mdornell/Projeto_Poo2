@@ -67,14 +67,15 @@ public class GerenciadorDominio {
 
     }
 
-    public void atualizarPessoa(int idPessoa, String nome, String celular, String email, String cep, String rua, int num,
+    public void atualizarPessoa(int idPessoa, String nome, String celular, String email,int idEnd ,String cep, String rua, int num,
             String referencia, String bairro, String cidade, String estado, String cpf, String rg, String cnpj,
             boolean novo) {
 
-        Endereco endereco = new Endereco(cep, rua, num, referencia, bairro, cidade, estado);
+        Endereco endereco = new Endereco(idEnd, cep, rua, num, referencia, bairro, cidade, estado);
+        genDAO.alterar(endereco);
 
         if (novo) {
-            Pessoa pessoa = new Cliente(idPessoa, cpf, rg, nome, celular, email, endereco);
+            Pessoa pessoa = new Cliente(idPessoa, nome, cpf, rg, celular, email, endereco);
             genDAO.alterar(pessoa);
         }
 
