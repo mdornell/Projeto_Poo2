@@ -75,5 +75,9 @@ public class GerenciadorDominio {
             }
         }
         return lista;}
+    
+     public void  deletar(Object obj) throws HibernateException{
+        genDAO.excluir(obj);
+    }
 
 }

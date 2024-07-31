@@ -3,7 +3,6 @@ package domain;
 import java.text.ParseException;
 import java.util.List;
 import javax.persistence.*;
-import javax.swing.text.html.HTMLDocument.BlockElement;
 
 @Entity
 public class Fornecedor extends Pessoa {
@@ -11,7 +10,7 @@ public class Fornecedor extends Pessoa {
     @Column(name = "cnpj")
     private String cnpj;
 
-    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
     private List<Material> materiais;
 
     public Fornecedor() {

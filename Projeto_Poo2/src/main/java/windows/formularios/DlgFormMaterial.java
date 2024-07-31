@@ -48,11 +48,9 @@ public class DlgFormMaterial extends javax.swing.JDialog {
         txtNome = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        btnNovo = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-
-        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEstado.setText("Estado :");
@@ -140,14 +138,14 @@ public class DlgFormMaterial extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnNovo.setText("Cadastrar");
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
-        btnSalvar.setText("Salvar");
+        btnAtualizar.setText("Salvar");
 
         btnExcluir.setText("Excluir");
 
@@ -157,9 +155,9 @@ public class DlgFormMaterial extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(119, Short.MAX_VALUE)
-                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112))
@@ -169,8 +167,8 @@ public class DlgFormMaterial extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo)
-                    .addComponent(btnSalvar)
+                    .addComponent(btnCadastrar)
+                    .addComponent(btnAtualizar)
                     .addComponent(btnExcluir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -199,7 +197,7 @@ public class DlgFormMaterial extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,13 +213,13 @@ public class DlgFormMaterial extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         GerenciaInterface genInterface = GerenciaInterface.getInstance();
 
         String nome = txtNome.getText();
@@ -234,7 +232,7 @@ public class DlgFormMaterial extends javax.swing.JDialog {
         genInterface.getGerDom().inserirMaterial(nome, descricao, preco, qtdEstoque, fornecedor);
 
         
-    }//GEN-LAST:event_btnNovoActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         GerenciaInterface genInterface = GerenciaInterface.getInstance();
@@ -242,15 +240,23 @@ public class DlgFormMaterial extends javax.swing.JDialog {
         genInterface.carregarComboBox(cbFornecedor, this, Fornecedor.class);
     }//GEN-LAST:event_formWindowOpened
 
+    private void limparCampos(){
+        txtNome.setText("");
+        txtDescricao.setText("");
+        txtPreco.setText("");
+        txtQtdEstoque.setText("");
+        cbFornecedor.setSelectedIndex(0);
+    }
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbFornecedor;
     private javax.swing.JLabel jLabel1;
