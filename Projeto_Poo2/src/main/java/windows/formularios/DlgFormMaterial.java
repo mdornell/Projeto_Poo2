@@ -54,7 +54,6 @@ public class DlgFormMaterial extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
 
         lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEstado.setText("Estado :");
@@ -161,20 +160,16 @@ public class DlgFormMaterial extends javax.swing.JDialog {
             }
         });
 
-        btnExcluir.setText("Excluir");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addGap(139, 139, 139)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                 .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
+                .addGap(67, 67, 67))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,8 +177,7 @@ public class DlgFormMaterial extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
-                    .addComponent(btnAtualizar)
-                    .addComponent(btnExcluir))
+                    .addComponent(btnAtualizar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -305,7 +299,6 @@ public class DlgFormMaterial extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbFornecedor;
