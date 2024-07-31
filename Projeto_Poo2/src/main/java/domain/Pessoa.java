@@ -22,7 +22,7 @@ public abstract class Pessoa implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "enderecoId")
     private Endereco endereco;
 
@@ -30,6 +30,14 @@ public abstract class Pessoa implements Serializable {
     }
     
     public Pessoa(String nome, String celular, String email, Endereco endereco) {
+        this.nome = nome;
+        this.celular = celular;
+        this.email = email;
+        this.endereco = endereco;
+    }
+
+    public Pessoa(int id, String nome, String celular, String email, Endereco endereco) {
+        this.id = id;
         this.nome = nome;
         this.celular = celular;
         this.email = email;

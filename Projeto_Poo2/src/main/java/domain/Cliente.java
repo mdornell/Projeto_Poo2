@@ -25,6 +25,12 @@ public class Cliente extends Pessoa {
         this.rg = rg;
     }
 
+    public Cliente(int id, String nome, String cpf, String rg, String celular, String email, Endereco endereco) {
+        super(id, nome, celular, email, endereco);
+        this.cpf = cpf;
+        this.rg = rg;
+    }
+
     public String getCpf() {
         return cpf;
     }
