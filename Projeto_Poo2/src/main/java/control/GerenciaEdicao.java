@@ -35,5 +35,9 @@ public class GerenciaEdicao {
     public void addMaterialSelecionado(Material materialSelecionado) {
         this.materialSelecionado.add(materialSelecionado);
     }
+
+    public void setMaterialSelecionado(List<Material> materialSelecionado) {
+        this.materialSelecionado = materialSelecionado;
+    }
     
 }

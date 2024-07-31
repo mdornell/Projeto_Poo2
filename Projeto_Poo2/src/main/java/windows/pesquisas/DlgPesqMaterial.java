@@ -6,8 +6,13 @@ package windows.pesquisas;
 
 import javax.swing.JOptionPane;
 
+import org.hibernate.HibernateException;
+
 import control.GerenciaInterface;
+import domain.Cliente;
+import domain.Fornecedor;
 import domain.Material;
+import domain.Pessoa;
 
 /**
  *
@@ -40,7 +45,7 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         btnSelecionar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -81,7 +86,12 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
 
         jButton3.setText("Cadastrar");
 
-        jButton4.setText("Deletar");
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +101,7 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
                 .addGap(17, 17, 17)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112)
                 .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -103,7 +113,7 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(btnSelecionar)
-                    .addComponent(jButton4))
+                    .addComponent(btnExcluir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -174,16 +184,38 @@ public class DlgPesqMaterial extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        GerenciaInterface gen = GerenciaInterface.getInstance();
+        int linha = tblMaterial.getSelectedRow();
+
+        if ( linha >= 0 ) {
+            if ( JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Excluir Material", JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION ) {
+                Material mat = (Material) tblMaterial.getValueAt(linha, 0);
+
+                try {                
+                    gen.getGerDom().deletar(mat);
+                    gen.carregarTabela(tblMaterial, this, Material.class, "", cbTipos.getSelectedIndex());
+                } catch (HibernateException ex) {
+                    JOptionPane.showMessageDialog(this,"Erro ao excluir Material. " + ex.getMessage(), "Pesquisar Material", JOptionPane.ERROR_MESSAGE);
+                }
+
+
+
+
+            }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisaControleCliente;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cbTipos;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

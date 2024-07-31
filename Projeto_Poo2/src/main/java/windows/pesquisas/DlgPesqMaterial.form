@@ -147,7 +147,7 @@
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="jButton3" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace pref="121" max="32767" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="btnExcluir" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                   <Component id="btnSelecionar" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -161,7 +161,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSelecionar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -182,10 +182,13 @@
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnExcluir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Deletar"/>
+            <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

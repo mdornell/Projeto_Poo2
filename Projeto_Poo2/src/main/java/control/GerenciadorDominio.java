@@ -18,6 +18,8 @@ import domain.TipoServico;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.hibernate.HibernateException;
 
 
@@ -57,6 +59,28 @@ public class GerenciadorDominio {
         return "Material inserido com sucesso!";
     }
 
+    public void atualizarMaterial(int idMaterial, String nome, String descricao, double preco, int quantidade,
+            Fornecedor fornecedor) {
+
+        Material material = new Material(idMaterial, nome, descricao, preco, quantidade, fornecedor);
+        genDAO.alterar(material);
+
+    }
+
+    public void atualizarPessoa(int idPessoa, String nome, String celular, String email, String cep, String rua, int num,
+            String referencia, String bairro, String cidade, String estado, String cpf, String rg, String cnpj,
+            boolean novo) {
+
+        Endereco endereco = new Endereco(cep, rua, num, referencia, bairro, cidade, estado);
+
+        if (novo) {
+            Pessoa pessoa = new Cliente(idPessoa, cpf, rg, nome, celular, email, endereco);
+            genDAO.alterar(pessoa);
+        }
+
+        Pessoa pessoa = new Fornecedor(idPessoa, cnpj, nome, celular, email, endereco);
+        genDAO.alterar(pessoa);
+    }
     
 
     public List list(Class classe){
@@ -75,5 +99,9 @@ public class GerenciadorDominio {
             }
         }
         return lista;}
+    
+     public void  deletar(Object obj) throws HibernateException{
+        genDAO.excluir(obj);
+    }
 
 }
